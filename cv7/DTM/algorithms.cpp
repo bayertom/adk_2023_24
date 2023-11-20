@@ -56,21 +56,23 @@ double Algorithms::get2LinesAngle(const QPointF3D &p1, const QPointF3D &p2, cons
     return acos(dot/(nu*nv));
 }
 
+
 int Algorithms::getNearestPoint(const QPointF3D &q, const std::vector<QPointF3D> &points)
 {
     //Find nearest point
     int imin = -1;
     double dmin = 1.0e10;
 
-    // Browse all points
+    //Browse all points
     for(int i = 0; i < points.size(); i++)
     {
-        // Point q is different from points[i]
+        //Point q is different from points[i]
         if(q != points[i])
         {
-            // Compute distance
+            //Compute distance
             double d = getDistance2D(q, points[i]);
-            // Update minimum distance
+
+            //Update minimum distance
             if (d < dmin)
             {
                 dmin = d;
@@ -89,16 +91,16 @@ int Algorithms::getDelaunayPoint(const QPointF3D &s, const QPointF3D &e, const s
     int imax = -1;
     double omax = 0;
 
-    // Browse all points
+    //Browse all points
     for(int i = 0; i < points.size(); i++)
     {
-        // Points s and e are different from points[i]
+        //Points s and e are different from points[i]
         if(s != points[i] && e != points[i])
         {
-            // Point in the left half-plane
+            //Point in the left half-plane
             if (getPointAndLinePosition(points[i], s, e) == 1)
             {
-                // Compute angle
+                //Compute angle
                 double o = get2LinesAngle(points[i], s, points[i], e);
 
                 //Update maximum
@@ -107,8 +109,7 @@ int Algorithms::getDelaunayPoint(const QPointF3D &s, const QPointF3D &e, const s
                     omax = o;
                     imax = i;
                 }
-
-             }
+            }
         }
     }
 
@@ -124,7 +125,6 @@ double Algorithms::getDistance2D(const QPointF3D &p1, const QPointF3D &p2){
     double dy = p2.y() - p1.y();
 
     return sqrt(dx*dx + dy*dy);
-
 }
 
 
