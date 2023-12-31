@@ -18,22 +18,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     algorithms.cpp \
     draw.cpp \
+    edge.cpp \
     main.cpp \
     mainform.cpp \
     qpointf3d.cpp \
-    sortpointsbyx.cpp
+    settings.cpp \
+    sortpointsbyx.cpp \
+    triangle.cpp
 
 HEADERS += \
     algorithms.h \
     draw.h \
+    edge.h \
     mainform.h \
     qpointf3d.h \
-    sortpointsbyx.h
+    settings.h \
+    sortpointsbyx.h \
+    triangle.h
 
 FORMS += \
-    mainform.ui
+    mainform.ui \
+    settings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    images.qrc

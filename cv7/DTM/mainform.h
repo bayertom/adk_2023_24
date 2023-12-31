@@ -2,6 +2,7 @@
 #define MAINFORM_H
 
 #include <QMainWindow>
+#include "settings.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainForm; }
@@ -11,9 +12,24 @@ class MainForm : public QMainWindow
 {
     Q_OBJECT
 
+private:
+    double zmin, zmax, dz;
+    Settings s;
+
 public:
     MainForm(QWidget *parent = nullptr);
     ~MainForm();
+
+private slots:
+    void on_actionCreate_DTM_triggered();
+
+    void on_actionContour_lines_triggered();
+
+    void on_actionAnalyze_slope_triggered();
+
+    void on_actionAnalyze_aspect_triggered();
+
+    void on_actionSettings_triggered();
 
 private:
     Ui::MainForm *ui;
